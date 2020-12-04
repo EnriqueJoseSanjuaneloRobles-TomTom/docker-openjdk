@@ -1,0 +1,23 @@
+on: [push]
+
+name: build
+
+jobs:
+  build_java_11_jdk_slim_aws:
+    name: Build 11 jdk slim
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: 11-jdk-slim 
+      uses: philips-software/docker-ci-scripts@v3.1.0
+      with:
+        dockerfile: src/jdk/11
+        image-name: openjdk
+        tags: 11-jdk 11-jdk-slim 11.0.6-jdk-slim
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
+        DOCKER_ORGANIZATION: elviejokike
+        GITHUB_ORGANIZATION: EnriqueJoseSanjuaneloRobles-TomTom
