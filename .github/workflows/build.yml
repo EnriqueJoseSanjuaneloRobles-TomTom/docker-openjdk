@@ -16,6 +16,7 @@ jobs:
         dockerfile: src/jdk/11
         image-name: openjdk
         tags: 11-jdk 11-jdk-slim 11.0.6-jdk-slim
+        push-branches: main master
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
